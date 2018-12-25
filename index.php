@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>  
+<html>
+<head>
+<style>
+.error {color: #FF0000;}
+.right{color:rgb(112,173,71)}
+</style>
+</head>
+<body>  
+
+<?php
+// define variables and set to empty values
+$nameErr = $nameRig = "";
+$name = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Odpověď je špatně, zkus to znovu.";
+  } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if ($name !== "Prahavice") {
+      $nameErr = "&#10060; Odpověď je špatně, zkus to znovu."; 
+    } else {
+    $nameRig = "&#9989; Výborně, tvá odpověď je správná!";}  
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+<h2>PHP Form Validation Example</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+  Name: <input type="text" name="name" value="<?php echo $name;?>">
+  <span class="error"><?php echo $nameErr;?></span>
+  <span class="right"><?php echo $nameRig;?></span>
+  <br><br>
+    <input type="submit" name="submit" value="Submit">  
+</form>
+
+<?php
+echo "<h2>Your Input:</h2>";
+echo $name;
+?>
+<?php
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = $name;
+fwrite($myfile, $txt);
+$txt = ", test1";
+fwrite($myfile, $txt);
+fclose($myfile);
+?>
+</body>
+</html>
