@@ -4,46 +4,10 @@
      <meta charset="UTF-8">
      <title>TITLE</title>
      <meta name="description" content="DESCRIPTION">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
  </head>
  <body>
-
-   <?php
-
-   $first = "";
-
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $first = test_input($_POST["first"]);
-   }
-
-   function test_input($data) {
-     $data = trim($data);
-     $data = stripslashes($data);
-     $data = htmlspecialchars($data);
-     return $data;
-   }
-   ?>
-
-<h1>Ahoj</h1>
-<h2>OTÁZKY:</h2>
-<p id="q2">2. Jak se jmenuje město, kde se nachází škola, na kterou dostal Harry dopis o přijetí? (5 b.)
-  <br> <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <p>
-  <label><b>Tvá odpověď:</b></label>
-  <input class="w3-input w3-border" name="first" type="text"></p>
-  <p>
-  <button class="w3-btn w3-blue">Zkontrolovat a pokračovat</button></p>
-</form>
-<?php
-echo "<h2>Your Input:</h2>";
-echo $first;
-echo "<br>";
-echo "boba";
-?>
-
-
-
+  <h1><a href="index.php">odkaz</a></h1>
 
  </body>
 
